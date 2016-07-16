@@ -2,6 +2,7 @@ var firebase = require('firebase');
 var moment = require('moment');
 
 var config = require('../config/config');
+var sentiment = require('./sentiment');
 
 firebase.initializeApp({
   serviceAccount: config.firebase,
@@ -19,24 +20,22 @@ module.exports = function(data) {
   //add section after nowNow
   var ref = db.ref(dateNow);
 
+  // map raw data to schema before pushing into firebase
   var mappedData = data.map(function(item){
+
     var obj = {
       title: item.title,
       abstract: item.abstract,
       url: item.url,
       published_date: item.published_date,
       section: item.section,
-      reactions: {
-        happy: 0,
-        sad: 0,
-        angry: 0,
-        scared: 0
-      }
+      reactions: sentiment(item.title, item.abstract)
     };
     return obj;
   })
 
   mappedData.forEach(function(article){
+    // use push to generate unique ID for each article
     ref.push(article)
   });
 

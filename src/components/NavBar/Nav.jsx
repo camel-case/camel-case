@@ -79,8 +79,7 @@ class Nav extends React.Component {
 					    title = {AboutLink}
 					    onLeftIconButtonTouchTap = { this.handleToggle.bind(this) }
 					    style = {
-					    	{
-					    		'backgroundColor': '#0097A7' }
+					    	{ 'backgroundColor': '#0097A7' }
 					    	}
 					    iconElementRight = {
 					    	<DatePicker

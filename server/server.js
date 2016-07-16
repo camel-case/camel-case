@@ -2,16 +2,11 @@ var express = require('express')
 var schedule = require('node-schedule');
 
 var nyt = require('./db/nyt-api');
-var path = require('path');
 
 var app = express();
 
 /* Serve all static files from public folder */
 app.use(express.static('./client'));
-app.get('*', function (request, response){
-  response.sendFile(path.resolve("client","index.html"))
-})
-
 
 /* Include routes */
 require('./routes/routes')(app);

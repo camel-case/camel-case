@@ -72853,7 +72853,7 @@
 								style: { 'backgroundColor': '#fff' },
 								iconElementRight: _react2.default.createElement(_DatePicker2.default, {
 									onChange: this.handleDateChange.bind(this),
-									minDate: new Date(2016, 6, 11),
+									minDate: new Date(2016, 6, 12),
 									maxDate: new Date(),
 									dateTimeFormat: this.handleDate.bind(this),
 									formatDate: this.handleDate.bind(this),

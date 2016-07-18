@@ -7,7 +7,6 @@ module.exports = function(title, abstract){
   reactions.scared = 0;
 
   var algo = sentiment(title + ' ' + abstract);
-  console.log('algo: ', algo)
 
   if (algo.score > 0) {
     reactions.happy = algo.score;
@@ -24,7 +23,6 @@ module.exports = function(title, abstract){
     reactions.sad = 0;
   }
 
-  console.log(reactions)
   return reactions;
 
 }

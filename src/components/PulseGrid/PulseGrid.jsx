@@ -21,9 +21,15 @@ class PulseGrid extends React.Component {
 	}
 
 	render(){
+
+		let orbs = this.mapArticles();
+		let grid = this.props.isFethcing ? <h2>yo</h2> : this.mapArticles();
+
+		console.log(this.props.isFetching)
+
 		return (
 			<div className="container-fluid">
-			{ this.mapArticles() }
+				{grid}
 			</div>
 		)
 	}

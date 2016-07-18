@@ -8,7 +8,7 @@ import AppBar from 'material-ui/AppBar';
 import moment from 'moment';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import {Link} from 'react-router'
+import { Link } from 'react-router'
 
 import { connect } from 'react-redux';
 import * as actions from '../../actions/actions';

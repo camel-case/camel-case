@@ -19,7 +19,6 @@ export function fetchArticles(sectionFilter='U.S.', date=dateNow) {
   var Articles = firebase.database().ref(date);
   return dispatch => {
     Articles.on('value', snapshot => {
-      console.log('recieve data from firebase');
       var data = [];
       for (var key in snapshot.val()){
         var obj = snapshot.val()[key];
@@ -28,7 +27,6 @@ export function fetchArticles(sectionFilter='U.S.', date=dateNow) {
           data.push(obj)
         }
       }
-      console.log('data manipulated from firebase')
       dispatch({
         type: FETCH_ARTICLES,
         payload: data

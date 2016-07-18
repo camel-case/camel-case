@@ -37,7 +37,7 @@ export default class PulseEntryOrb extends React.Component {
       }
 
     return (
-      <div className='pulsatingCircle' onClick={() => this.props.handleOrbClick(this.props.reactions)}>
+      <div className='pulsatingCircle'>
           <span className={'firstCircle ' + firstCircleClass}  style={{'backgroundColor': color}}></span>
           <span className={'secondCircle ' + secondCircleClass} style={{'borderColor':color}} ></span>
           <span className={'thirdCircle ' + thirdCircleClass} style={{'borderColor':color}} ></span>

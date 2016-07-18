@@ -39593,7 +39593,8 @@
 	  switch (action.type) {
 	    case _actions.FETCH_ARTICLES:
 	      return Object.assign({}, state, {
-	        data: action.payload
+	        data: action.payload,
+	        isFetching: false
 	      });
 	    default:
 	      return state;
@@ -39648,7 +39649,6 @@
 	  var Articles = _firebase2.default.database().ref(date);
 	  return function (dispatch) {
 	    Articles.on('value', function (snapshot) {
-	      console.log('recieve data from firebase');
 	      var data = [];
 	      for (var key in snapshot.val()) {
 	        var obj = snapshot.val()[key];
@@ -39657,7 +39657,6 @@
 	          data.push(obj);
 	        }
 	      }
-	      console.log('data manipulated from firebase');
 	      dispatch({
 	        type: FETCH_ARTICLES,
 	        payload: data
@@ -55210,10 +55209,20 @@
 		}, {
 			key: 'render',
 			value: function render() {
+	
+				var orbs = this.mapArticles();
+				var grid = this.props.isFethcing ? _react2.default.createElement(
+					'h2',
+					null,
+					'yo'
+				) : this.mapArticles();
+	
+				console.log(this.props.isFetching);
+	
 				return _react2.default.createElement(
 					'div',
 					{ className: 'container-fluid' },
-					this.mapArticles()
+					grid
 				);
 			}
 		}]);
@@ -55346,8 +55355,6 @@
 	  _createClass(PulseEntryOrb, [{
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-	
 	      var color = _PulseHelpers2.default.colorPicker(this.props.reactions);
 	
 	      var firstCircleClass;
@@ -55376,9 +55383,7 @@
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'pulsatingCircle', onClick: function onClick() {
-	            return _this2.props.handleOrbClick(_this2.props.reactions);
-	          } },
+	        { className: 'pulsatingCircle' },
 	        _react2.default.createElement('span', { className: 'firstCircle ' + firstCircleClass, style: { 'backgroundColor': color } }),
 	        _react2.default.createElement('span', { className: 'secondCircle ' + secondCircleClass, style: { 'borderColor': color } }),
 	        _react2.default.createElement('span', { className: 'thirdCircle ' + thirdCircleClass, style: { 'borderColor': color } })
@@ -72848,7 +72853,7 @@
 								style: { 'backgroundColor': '#fff' },
 								iconElementRight: _react2.default.createElement(_DatePicker2.default, {
 									onChange: this.handleDateChange.bind(this),
-									minDate: new Date(2016, 6, 11),
+									minDate: new Date(2016, 6, 12),
 									maxDate: new Date(),
 									dateTimeFormat: this.handleDate.bind(this),
 									formatDate: this.handleDate.bind(this),

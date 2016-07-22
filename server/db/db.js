@@ -11,7 +11,10 @@ firebase.initializeApp({
 
 
 /* Use moment to ping NYT API for today's most popular articles */
-var dateNow = moment().format('MM-DD-YY')
+function getDateNow() {
+  var dateNow = moment().format('MM-DD-YY')
+  return dateNow; 
+}
 /* Instantiate a ref to the DB */
 var db = firebase.database().ref(dateNow);
 
@@ -36,7 +39,7 @@ module.exports = function(data) {
             /* If title already in DB, splice out */
             rawData.splice(i, 1);
             break;
-          }
+          } 
         }
       })
       /* Only map and push data if something new exists */

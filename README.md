@@ -1,8 +1,8 @@
 # **camel-case**
 
-![newspulsedemo](https://dl.dropboxusercontent.com/u/106304615/news-pulse.gif)
-
 ##### https://news-pulse.herokuapp.com
+
+![newspulsedemo](https://dl.dropboxusercontent.com/u/106304615/news-pulse.gif)
 
 ### Quick Start
 `$ git clone https://github.com/camel-case/camel-case.git`  

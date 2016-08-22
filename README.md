@@ -1,6 +1,6 @@
 # **camel-case**
 
-![alt tag](https://www.dropbox.com/s/97rjf1c52oqykie/news-pulse-3.gif?dl=0)
+![alt tag](https://dl.dropboxusercontent.com/u/106304615/news-pulse-3.gif)
 
 ##### https://news-pulse.herokuapp.com
 

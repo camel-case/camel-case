@@ -13,6 +13,83 @@ Navigation
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+  margin-top: 10px;
+ 
+}
+
+#centerDate {
+  display: inline-block;
+}
+
+#centerSection {
+  display: inline-block;
+  margin-left: 120px;
+
+}
+
+#rightButtons, #logoutButton {
+  display: right;
+  margin-top: 10px;
+}
+
+#signinModal, #signupModal {
+  margin-bottom: 150px;
+
+}
+
+html, body {
+  background-image: url('http://pregnancydoctorpenang.com/files/minimalizm-gradient-background.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#signinUser, #signupUser  {
+  margin: 45px;
+
+}
+
+#signinPass, #signupPass, #signupName {
+  margin: 45px;
+}
+
+/*#signinButtons {
+  display: inline-block;
+}
+
+#signupButtons {
+  display: inline-block;
+}*/
+
+#signinConfirm, #signupConfirm {
+  position: inherit;
+  margin-right: 45px;
+  display: inline-block;  
+  margin-left: 45px;
+  margin-bottom: 60px;
+}
+
+#signinCancel, #signupCancel {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+
+#signinButton {
+  background-color: #a68ed4;
+}
+
+
+
+
+
+/******************************
+Auth Views
+*******************************/
+
+#unVerifiedView {
+  display: none;
 }
 
 
@@ -195,6 +272,11 @@ Pulse Entry Hover
   animation: all 0.5s ease-in-out;
   -webkit-transition: all 0.5s ease-in-out;
   padding: 10px;
+}
+
+.pulseEntryHover:hover #unVerifiedView {
+  display: inherit;
+  text-align: center;
 }
 
 .pulseEntryHover:hover {

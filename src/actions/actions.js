@@ -1,9 +1,15 @@
 import firebase from 'firebase';
 import reactfire from 'reactfire';
 import moment from 'moment';
+import axios from 'axios';
+
 
 export const FETCH_ARTICLES = 'FETCH_ARTICLES';
 export const FETCH_SECTIONS = 'FETCH_SECTIONS';
+export const AUTHENTICATED = 'AUTHENTICATED';
+export const LOGOUT = "LOGOUT";
+export const AUTHNAME = "AUTHNAME";
+
 
 var config = {
   apiKey: "35c86f61815f2421bb081cc7e82fbb98bb56a812",
@@ -66,5 +72,66 @@ export function incrementReactions(id, reactionType, currentCount) {
   return dispatch => {
     console.log('sending data to firebase');
     firebase.database().ref(currentlySelectedDate + '/' + id + '/reactions' ).update(reactionToAdd)
+  }
+}
+
+export function submitUsernameAndPassword(userObj) {
+  return dispatch => {
+    axios.post('/auth/signup', userObj)
+      .then(function(response) {
+        console.log(response, 'what are you, response?')
+        window.localStorage.token = response.data.userToken;
+        var strArr = response.data.userToken.split('.');
+        var name = window.atob(strArr[1]);
+
+        dispatch({
+          type: AUTHENTICATED,
+          payload: true
+        })
+          dispatch({
+          type: AUTHNAME,
+          payload: name
+        })
+      })
+      .catch(function(error) {
+        console.log(error, 'there was an error submiting a username or password')  
+      })
+  }
+}
+
+export function submitSignin(userObj) {
+  return dispatch => {
+    console.log("userObj in actions", userObj)
+    axios.post('/auth/signin', userObj)
+      .then(function(response) {
+        console.log("In action.then")
+        console.log("response in action.then", response)
+        window.localStorage.token = response.data.userToken;
+        var strArr = response.data.userToken.split('.');
+        var name = window.atob(strArr[1]);
+        dispatch({
+          type: AUTHENTICATED,
+          payload: true
+        })
+          dispatch({
+          type: AUTHNAME,
+          payload: name
+        })
+
+      })
+      .catch(function(error) {
+        console.error("error getting user authenticated : ", error);
+      })
+  }
+}
+
+export function logoutUser() {
+
+  return dispatch => {
+    dispatch({
+      type: LOGOUT,
+      payload: false   
+    })
+     
   }
 }

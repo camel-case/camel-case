@@ -1,4 +1,7 @@
 # **camel-case**
+
+![alt tag](https://www.dropbox.com/s/97rjf1c52oqykie/news-pulse-3.gif?dl=0)
+
 ##### https://news-pulse.herokuapp.com
 
 ### Quick Start
